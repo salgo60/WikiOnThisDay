@@ -1,7 +1,28 @@
+
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-/* Start by setting display:none to make this hidden.
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>WD On this day</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="https://cdn.rawgit.com/wikimedia/wikidata-query-gui/master/wikibase/queryService/api/Sparql.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <style type="text/css">
+    /* Start by setting display:none to make this hidden.
    Then we position it in relation to the viewport window
    with position:fixed. Width, height, top and left speak
    speak for themselves. Background we set to 80% white with
@@ -151,8 +172,15 @@ h2 a:hover {
      color: darkgreen;
      font-family: "Times New Roman", Times, serif;     
 }
- </style>
-    <script>
+ 
+  </style>
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">
+
+
+    var VanillaRunOnDomReady = function() {
+      
 $body = $("body");
 
 $(document).on({
@@ -222,12 +250,37 @@ function retrieve(url){
           });
   	}})
 }  
-    </script>
-  </head>
+
+
+    }
+
+var alreadyrunflag = 0;
+
+if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", function(){
+        alreadyrunflag=1; 
+        VanillaRunOnDomReady();
+    }, false);
+else if (document.all && !window.opera) {
+    document.write('<script type="text/javascript" id="contentloadtag" defer="defer" src="javascript:void(0)"><\/script>');
+    var contentloadtag = document.getElementById("contentloadtag")
+    contentloadtag.onreadystatechange=function(){
+        if (this.readyState=="complete"){
+            alreadyrunflag=1;
+            VanillaRunOnDomReady();
+        }
+    }
+}
+
+window.onload = function(){
+  setTimeout("if (!alreadyrunflag){VanillaRunOnDomReady}", 0);
+}
+
+</script>
+
+</head>
 <body>
-<a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-	
-<h2>On this day test</h2>
+  <h2>On this day test</h2>
 <div id="explain">
 Gets data from  <a href="https://byabbe.se/on-this-day/">byabbe.se/on-this-day/</a> <br /><br /> <br />
 <select class="onThisDayList">
@@ -238,5 +291,15 @@ Gets data from  <a href="https://byabbe.se/on-this-day/">byabbe.se/on-this-day/<
 <div id="Hits"></div>
 <div id="output"></div>
 <div class="modal"></div>
-<body>
+  
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "wkdcz4h2"
+      }], "*")
+    }
+  </script>
+</body>
 </html>
