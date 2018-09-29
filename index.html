@@ -13,12 +13,9 @@
   <script
     type="text/javascript"
     src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"
-    
-  ></script>
+   ></script>
 
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">
-
-      <script type="text/javascript" src="https://cdn.rawgit.com/wikimedia/wikidata-query-gui/master/wikibase/queryService/api/Sparql.js"></script>
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
   <style type="text/css">
@@ -192,14 +189,14 @@ $(function() {
 	new WOW().init();
 
   var d = new Date();
-	var month = d.getMonth()+1;
-	var day = d.getDate();
+  var month = d.getMonth()+1;
+  var day = d.getDate();
 
   var urlAbbe = "https://byabbe.se/on-this-day";
-//  var url = "https://byabbe.se/on-this-day/9/27/events.json";
-	var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
+//  var url = "https://byabbe.se/on-this-day/9/27/events.json"; 
+  var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
 
-    retrieve(url);
+  retrieve(url);
 
 	$( '.onThisDayList' ).change(function() {       
 		var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
@@ -220,8 +217,8 @@ function retrieve(url){
    type: "GET",
    url: url,
    complete: function(data) {
-    wikipage = data.responseJSON.wikipedia;
-    $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");   
+   wikipage = data.responseJSON.wikipedia;
+   $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");   
 		switch( $('.onThisDayList').val()) {
     	case "births":
         	info = data.responseJSON.births;
@@ -232,7 +229,7 @@ function retrieve(url){
     	default:
         	info = data.responseJSON.events;
 		} 		
-      let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
+        let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
           $("#Hits").html(numberofHits);   
           
           $.each(info, (i, val) => {
@@ -280,7 +277,9 @@ window.onload = function(){
 
 </head>
 <body>
-  <h2>On this day test</h2>
+<a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+<h2>On this day test</h2>
 <div id="explain">
 Gets data from  <a href="https://byabbe.se/on-this-day/">byabbe.se/on-this-day/</a> <br /><br /> <br />
 <select class="onThisDayList">
