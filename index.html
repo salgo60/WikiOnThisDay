@@ -1,5 +1,234 @@
 <html>
-<head></head>
+  <head>
+    <style>
+    Edit in JSFiddle
+Result
+JavaScript
+HTML
+CSS
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   speak for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://sampsonresume.com/labs/pIkfp.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+body {
+   color: #444;
+   background: #e2ff00;
+   /* fallback for old browsers */
+   background: -webkit-linear-gradient(to left, #000800, #e2ff00);
+   /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to left, #000800, #e2ff00);
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   font-family: 'Dosis', sans-serif;
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100vh;
+   font-size: 16px;
+ }
+
+ a {
+   color: #444;
+   cursor: pointer;
+ }
+
+ a:hover {
+   color: #555;
+   text-decoration: none;
+ }
+#URL {
+   margin-top: 20px;
+   padding: 0 5%;
+   color: darkblue;
+}
+
+#Hits {
+   margin-top: 20px;
+   padding: 0 5%;
+   color: #437746;
+   font-size: 30px;
+}
+
+.more {
+   color: darkgreen;
+} 
+#output {
+   margin-top: 40px;
+   padding: 0 5%;
+ }
+
+ 
+.list a {
+  text-decoration: none;
+}
+.list a:hover {
+  text-decoration: none;
+  background: lightgreen;
+} 
+li a:hover {
+  background: lightgreen;
+}
+
+h2 a:hover {
+  background: lightgreen;
+}
+
+
+ #text {
+   padding: 10px 20px;
+   border-top-left-radius: 30px;
+   border-bottom-left-radius: 30px;
+   border: 0px solid;
+   width: 50%;
+ }
+
+ #text:focus {
+   box-shadow: 1px 3px 40px 5px #536970;
+   outline: none;
+ }
+ #not-found p {
+   font-size: 20px;
+  }
+
+.result {
+  padding: 0.5% 2%;
+  background: #fff;
+  margin: 1.5%;
+  border-left: 7px solid #536976;
+}
+
+.result h2 {
+  color: #536976;
+}
+  
+
+ button {
+   background: #536976;
+   color: #fff;
+   padding: 10px 20px;
+   border: 1px solid #536976;
+   border-radius: 30px;
+   margin-left: -55px;
+ }
+
+
+ .currDay {
+    background-color: aliceblue;
+    margin: 8px;
+    size: 12px;
+    border-radius: 25px;
+    border: 2px solid darkBlue;
+    padding: 20px; 
+    width: 500px;
+    height:150px;    
+ }
+
+.searchmatch{
+      color: #a0ccd2;
+}
+#explain
+{
+     color: darkgreen;
+     font-family: "Times New Roman", Times, serif;     
+}
+ </style>
+    <script>
+$body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+    ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
+$(function() {
+	new WOW().init();
+
+  var d = new Date();
+	var month = d.getMonth()+1;
+	var day = d.getDate();
+
+  var urlAbbe = "https://byabbe.se/on-this-day";
+//  var url = "https://byabbe.se/on-this-day/9/27/events.json";
+	var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
+
+    retrieve(url);
+
+	$( '.onThisDayList' ).change(function() {       
+		var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
+		retrieve(url);
+	});
+
+});
+
+  
+function retrieve(url){
+
+  $("#URL").html("<a href='" + url + "' target=_blank>" + url +"</a>");        
+  let output = "";
+  
+  $.event.trigger("ajaxStart");
+
+  $.ajax({
+   type: "GET",
+   url: url,
+   complete: function(data) {
+    wikipage = data.responseJSON.wikipedia;
+    $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");   
+		switch( $('.onThisDayList').val()) {
+    	case "births":
+        	info = data.responseJSON.births;
+        	break;
+    	case "deaths":
+        	info = data.responseJSON.deaths;
+        	break;
+    	default:
+        	info = data.responseJSON.events;
+		} 		
+      let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
+          $("#Hits").html(numberofHits);   
+          
+          $.each(info, (i, val) => {
+            output += `
+              <div class="text-left" id="results">
+                  <div class="wow slideInLeft result" data-wow-offset="100" data-wow-duration="1s">${val.year} - ${val.description}
+                  </div>
+              </div>`
+              let wiki = val.wikipedia;
+							$.each(wiki, (j, w) => {
+            		output += `<div class="list">* Wikipedia <a href="${w.wikipedia}">${w.title}</a></div>`;
+                });
+          $("#output").html(output);
+//  				$.event.trigger("ajaxStop");
+          });
+  	}})
+}  
+    </script>
+  </head>
 <body>
 <h2>On this day test</h2>
 <div id="explain">
