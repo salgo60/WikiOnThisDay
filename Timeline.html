@@ -23,34 +23,11 @@
 		}
 </style>
 <!------------ HistropediaJS and dependencies ------------>
-<script src="./js/jquery-3.1.0.min.js"></script>
-<script src="./js/jquery.mousewheel-3.1.13.min.js"></script>
-<script src="./js/histropedia-1.0.5.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="http://histropedia.com/histropediajs/js/histropedia-1.0.5.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"></script>
-
-  </head>
-
-  <body>
-    <a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-<div>
-    <h1>OnThisDay Basic timeline with default options</h1>
-    <hr>
-    <div id="container1"></div>
-    <!-- container for the timeline -->
-    <hr>
-    <h2>Quick guide to initialise a timeline, <a href="http://histropedia.com/histropediajs/documentation.html">more documentation available online</a></h2>
-    <ll>
-      <li>API: <a href="https://byabbe.se/on-this-day/" target=_blank>Wikipedia, On this Day</a</li>
-      <li>GitHub:
-        <ll>
-          <li>Test <a href="https://salgo60.github.io/WikiOnThisDay/" target="_blank">WikiOnThisDay</li>
-          <li>Timeline Histropedia <a hef="https://salgo60.github.io/WikiOnThisDay/TimeLine.html" target=_blank>Timeline</li>
-        </ll></li>
-    </ll>
-  </div>
-
-
-
+<script>
       // STEP 1: CREATE SOME ARTICLES TO GO ON THE TIMELINE
 
       //data for an article
@@ -117,21 +94,37 @@
         },
         isToPresent: true,
       }
-
-      // STEP 2: INITIALISE A NEW TIMELINE
-
-      //choose a container element for the timeline
       var container1 = document.getElementById("container1");
 
-      //initialise the timeline with default options. See online documentation for full list of available options
       var timeline1 = new Histropedia.Timeline(container1, {})
 
-
-      // STEP 3: LOAD ARTICLES ON TO THE TIMELINE
-
-      timeline1.load([article1, article2, article3, article4]);
+     timeline1.load([article1, article2, article3, article4]);
 
 
     </script>
+  </head>
+
+  <body>
+    <a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+<div>
+    <h1>OnThisDay Basic timeline with default options</h1>
+    <hr>
+    <div id="container1"></div>
+    <!-- container for the timeline -->
+    <hr>
+    <h2>Quick guide to initialise a timeline, <a href="http://histropedia.com/histropediajs/documentation.html">more documentation available online</a></h2>
+    <ll>
+      <li>API: <a href="https://byabbe.se/on-this-day/" target=_blank>Wikipedia, On this Day</a</li>
+      <li>GitHub:
+        <ll>
+          <li>Test <a href="https://salgo60.github.io/WikiOnThisDay/" target="_blank">WikiOnThisDay</li>
+          <li>Timeline Histropedia <a hef="https://salgo60.github.io/WikiOnThisDay/TimeLine.html" target=_blank>Timeline</li>
+        </ll></li>
+    </ll>
+  </div>
+
+
+
+
 </body>
 </html>
