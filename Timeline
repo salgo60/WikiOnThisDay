@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>OnThisDay - HistropediaJS</title>
+  <!--A bit of styling for this page. HistropediaJS renders in canvas and does not require any CSS, all styling is done via the timeline options-->
+  <style>
+		div {
+			width: 1100px;
+			margin: 0 auto;
+			margin-bottom: 50px;
+		}
+		pre {
+			background-color: #F5F5F5;
+			padding: 20px;
+		}
+		span {
+			color: orange
+		}
+		h3 {
+			margin: 0px;
+			font-weight: bold;
+		}
+</style>
+<!------------ HistropediaJS and dependencies ------------>
+<script src="./js/jquery-3.1.0.min.js"></script>
+<script src="./js/jquery.mousewheel-3.1.13.min.js"></script>
+<script src="./js/histropedia-1.0.5.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"></script>
+
+  </head>
+
+  <body>
+    <a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+<div>
+    <h1>OnThisDay Basic timeline with default options</h1>
+    <hr>
+    <div id="container1"></div>
+    <!-- container for the timeline -->
+    <hr>
+    <h2>Quick guide to initialise a timeline, <a href="http://histropedia.com/histropediajs/documentation.html">more documentation available online</a></h2>
+    <ll>
+      <li>API: <a href="https://byabbe.se/on-this-day/" target=_blank>Wikipedia, On this Day</a</li>
+      <li>GitHub:
+        <ll>
+          <li>Test <a href="https://salgo60.github.io/WikiOnThisDay/" target="_blank">WikiOnThisDay</li>
+          <li>Timeline Histropedia <a hef="https://salgo60.github.io/WikiOnThisDay/TimeLine.html" target=_blank>Timeline</li>
+        </ll></li>
+    </ll>
+  </div>
+
+
+
+      // STEP 1: CREATE SOME ARTICLES TO GO ON THE TIMELINE
+
+      //data for an article
+      var article1 = {
+        id: 1,
+        title: "Article 1",
+        subtitle: "2010",
+        from: {
+          year: 2010,
+          month: 1,
+          day: 1,
+          precision: Histropedia.PRECISION_DAY
+        }
+      }
+
+      //data for another article
+      var article2 = {
+        id: 2,
+        title: "Article 2",
+        subtitle: "11th Mar - 25th Dec  2011",
+        from: {
+          year: 2011,
+          month: 3,
+          day: 11,
+          precision: Histropedia.PRECISION_DAY
+        },
+
+        //for article2 we'll also inlcude an end date and image...
+        to: {
+          year: 2011,
+          month: 12,
+          day: 25,
+          precision: Histropedia.PRECISION_DAY
+        },
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Gentiana-clusii-ClusiusEnzian.jpg"
+      }
+
+      //data for a third article
+      var article3 = {
+        id: 3,
+        title: "Article 3",
+        subtitle: "11th Oct 2011 - present",
+        from: {
+          year: 2011,
+          month: 10,
+          day: 11,
+          precision: Histropedia.PRECISION_DAY
+        },
+
+        //for article3, use present day as end date...
+        isToPresent: true,
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Lilac-Breasted_Roller_with_Grasshopper_on_Acacia_tree_in_Botswana_%28small%29_c.jpg"
+      }
+
+      var article4 = {
+        id: 4,
+        title: "Article 4",
+        subtitle: "11th Oct 2018",
+        from: {
+          year: 2018,
+          month: 10,
+          day: 11,
+          precision: Histropedia.PRECISION_DAY
+        },
+        isToPresent: true,
+      }
+
+      // STEP 2: INITIALISE A NEW TIMELINE
+
+      //choose a container element for the timeline
+      var container1 = document.getElementById("container1");
+
+      //initialise the timeline with default options. See online documentation for full list of available options
+      var timeline1 = new Histropedia.Timeline(container1, {})
+
+
+      // STEP 3: LOAD ARTICLES ON TO THE TIMELINE
+
+      timeline1.load([article1, article2, article3, article4]);
+
+
+    </script>
+</body>
+</html>
