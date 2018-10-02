@@ -19,7 +19,7 @@
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
   <style type="text/css">
-    /* Start by setting display:none to make this hidden.
+/* Start by setting display:none to make this hidden.
    Then we position it in relation to the viewport window
    with position:fixed. Width, height, top and left speak
    speak for themselves. Background we set to 80% white with
@@ -80,6 +80,12 @@ body {
    color: darkblue;
 }
 
+#wikiPage {
+   margin-top: 20px;
+   padding: 2% 6%;
+   color: darkblue;
+}
+
 #Hits {
    margin-top: 20px;
    padding: 0 5%;
@@ -93,9 +99,20 @@ body {
 #output {
    margin-top: 40px;
    padding: 0 5%;
- }
+}
 
- 
+
+#TimeAPI {
+   padding: 0 7%;
+   display:inline;
+   color:red;
+   }
+#Time {
+   padding: 0 10%;
+   display:inline;
+   color:red;
+   }
+
 .list a {
   text-decoration: none;
 }
@@ -170,6 +187,7 @@ h2 a:hover {
      font-family: "Times New Roman", Times, serif;     
 }
  
+ 
   </style>
   <!-- TODO: Missing CoffeeScript 2 -->
 
@@ -189,14 +207,14 @@ $(function() {
 	new WOW().init();
 
   var d = new Date();
-  var month = d.getMonth()+1;
-  var day = d.getDate();
+	var month = d.getMonth()+1;
+	var day = d.getDate();
 
   var urlAbbe = "https://byabbe.se/on-this-day";
-//  var url = "https://byabbe.se/on-this-day/9/27/events.json"; 
-  var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
+//  var url = "https://byabbe.se/on-this-day/9/27/events.json";
+	var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
 
-  retrieve(url);
+    retrieve(url);
 
 	$( '.onThisDayList' ).change(function() {       
 		var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
@@ -207,7 +225,8 @@ $(function() {
 
   
 function retrieve(url){
-
+  start = new Date().getTime();
+//console.log(start);
   $("#URL").html("<a href='" + url + "' target=_blank>" + url +"</a>");        
   let output = "";
   
@@ -217,8 +236,12 @@ function retrieve(url){
    type: "GET",
    url: url,
    complete: function(data) {
-   wikipage = data.responseJSON.wikipedia;
-   $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");   
+   time = new Date().getTime() - start; // millisec
+	 console.log(time)
+	$("#TimeAPI").html(time + " msec");   
+
+    wikipage = data.responseJSON.wikipedia;
+    $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");   
 		switch( $('.onThisDayList').val()) {
     	case "births":
         	info = data.responseJSON.births;
@@ -229,9 +252,9 @@ function retrieve(url){
     	default:
         	info = data.responseJSON.events;
 		} 		
-        let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
+      let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
           $("#Hits").html(numberofHits);   
-          
+
           $.each(info, (i, val) => {
             output += `
               <div class="text-left" id="results">
@@ -245,28 +268,12 @@ function retrieve(url){
           $("#output").html(output);
 //  				$.event.trigger("ajaxStop");
           });
+					time = new Date().getTime() - start; // millisec
+					console.log(time)
+					$("#Time").html(time + " msec");   
+
   	}})
-}  
-
-
-    }
-
-var alreadyrunflag = 0;
-
-if (document.addEventListener)
-    document.addEventListener("DOMContentLoaded", function(){
-        alreadyrunflag=1; 
-        VanillaRunOnDomReady();
-    }, false);
-else if (document.all && !window.opera) {
-    document.write('<script type="text/javascript" id="contentloadtag" defer="defer" src="javascript:void(0)"><\/script>');
-    var contentloadtag = document.getElementById("contentloadtag")
-    contentloadtag.onreadystatechange=function(){
-        if (this.readyState=="complete"){
-            alreadyrunflag=1;
-            VanillaRunOnDomReady();
-        }
-    }
+  }  
 }
 
 window.onload = function(){
@@ -287,10 +294,14 @@ Gets data from  <a href="https://byabbe.se/on-this-day/">byabbe.se/on-this-day/<
   <option value="births">Births</option>
   <option value="deaths">Deaths</option>
 </select><br /><br />API call: <span id="URL"></span><br />Wikipage: <span id="wikiPage"></span>
-<div id="Hits"></div>
+<br />
+Tid API: <div id="TimeAPI"></div><br />
+Tid: <div id="Time"></div>
+<div id="Hits"></div> <div id="Time"></div>
+<div id="Render"></div>
+
 <div id="output"></div>
-<div class="modal"></div>
-  
+<div class="modal"></div>  
   <script>
     // tell the embed parent frame the height of the content
     if (window.parent && window.parent.parent){
