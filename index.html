@@ -12,7 +12,7 @@
 
   <script
     type="text/javascript"
-    src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"
    ></script>
 
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">
@@ -32,16 +32,16 @@
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 255, 255, 255, .8 ) 
-                url('http://sampsonresume.com/labs/pIkfp.gif') 
-                50% 50% 
+    background: rgba( 255, 255, 255, .8 )
+                url('http://sampsonresume.com/labs/pIkfp.gif')
+                50% 50%
                 no-repeat;
 }
 
 /* When the body has the loading class, we turn
    the scrollbar off with overflow:hidden */
 body.loading {
-    overflow: hidden;   
+    overflow: hidden;
 }
 
 /* Anytime the body has the loading class, our
@@ -95,7 +95,7 @@ body {
 
 .more {
    color: darkgreen;
-} 
+}
 #output {
    margin-top: 40px;
    padding: 0 5%;
@@ -119,7 +119,7 @@ body {
 .list a:hover {
   text-decoration: none;
   background: lightgreen;
-} 
+}
 li a:hover {
   background: lightgreen;
 }
@@ -155,7 +155,7 @@ h2 a:hover {
 .result h2 {
   color: #536976;
 }
-  
+
 
  button {
    background: #536976;
@@ -173,9 +173,9 @@ h2 a:hover {
     size: 12px;
     border-radius: 25px;
     border: 2px solid darkBlue;
-    padding: 20px; 
+    padding: 20px;
     width: 500px;
-    height:150px;    
+    height:150px;
  }
 
 .searchmatch{
@@ -184,23 +184,21 @@ h2 a:hover {
 #explain
 {
      color: darkgreen;
-     font-family: "Times New Roman", Times, serif;     
+     font-family: "Times New Roman", Times, serif;
 }
- 
- 
+
+
   </style>
   <!-- TODO: Missing CoffeeScript 2 -->
 
   <script type="text/javascript">
 
 
-    var VanillaRunOnDomReady = function() {
-      
 $body = $("body");
 
 $(document).on({
     ajaxStart: function() { $body.addClass("loading");    },
-    ajaxStop: function() { $body.removeClass("loading"); }    
+    ajaxStop: function() { $body.removeClass("loading"); }
 });
 
 $(function() {
@@ -214,22 +212,22 @@ $(function() {
 //  var url = "https://byabbe.se/on-this-day/9/27/events.json";
 	var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
 
-    retrieve(url);
+  retrieve(url);
 
-	$( '.onThisDayList' ).change(function() {       
+	$( '.onThisDayList' ).change(function() {
 		var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
 		retrieve(url);
 	});
 
 });
 
-  
+
 function retrieve(url){
   start = new Date().getTime();
 //console.log(start);
-  $("#URL").html("<a href='" + url + "' target=_blank>" + url +"</a>");        
+  $("#URL").html("<a href='" + url + "' target=_blank>" + url +"</a>");
   let output = "";
-  
+
   $.event.trigger("ajaxStart");
 
   $.ajax({
@@ -238,10 +236,10 @@ function retrieve(url){
    complete: function(data) {
    time = new Date().getTime() - start; // millisec
 	 console.log(time)
-	$("#TimeAPI").html(time + " msec");   
+	$("#TimeAPI").html(time + " msec");
 
     wikipage = data.responseJSON.wikipedia;
-    $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");   
+    $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");
 		switch( $('.onThisDayList').val()) {
     	case "births":
         	info = data.responseJSON.births;
@@ -251,9 +249,9 @@ function retrieve(url){
         	break;
     	default:
         	info = data.responseJSON.events;
-		} 		
+		}
       let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
-          $("#Hits").html(numberofHits);   
+          $("#Hits").html(numberofHits);
 
           $.each(info, (i, val) => {
             output += `
@@ -270,15 +268,10 @@ function retrieve(url){
           });
 					time = new Date().getTime() - start; // millisec
 					console.log(time)
-					$("#Time").html(time + " msec");   
+					$("#Time").html(time + " msec");
 
   	}})
-  }  
-}
-
-window.onload = function(){
-  setTimeout("if (!alreadyrunflag){VanillaRunOnDomReady}", 0);
-}
+  }
 
 </script>
 
@@ -301,7 +294,7 @@ Tid: <div id="Time"></div>
 <div id="Render"></div>
 
 <div id="output"></div>
-<div class="modal"></div>  
+<div class="modal"></div>
   <script>
     // tell the embed parent frame the height of the content
     if (window.parent && window.parent.parent){
