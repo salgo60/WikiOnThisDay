@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>WD On this day</title>
@@ -9,300 +9,302 @@
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"
-   ></script>
-
-    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"></script>
   <style type="text/css">
-/* Start by setting display:none to make this hidden.
+    /* Start by setting display:none to make this hidden.
    Then we position it in relation to the viewport window
    with position:fixed. Width, height, top and left speak
    speak for themselves. Background we set to 80% white with
    our animation centered, and no-repeating */
-.modal {
-    display:    none;
-    position:   fixed;
-    z-index:    1000;
-    top:        0;
-    left:       0;
-    height:     100%;
-    width:      100%;
-    background: rgba( 255, 255, 255, .8 )
-                url('http://sampsonresume.com/labs/pIkfp.gif')
-                50% 50%
-                no-repeat;
-}
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(255, 255, 255, .8) url('http://sampsonresume.com/labs/pIkfp.gif') 50% 50% no-repeat;
+    }
 
-/* When the body has the loading class, we turn
+    /* When the body has the loading class, we turn
    the scrollbar off with overflow:hidden */
-body.loading {
-    overflow: hidden;
-}
+    body.loading {
+      overflow: hidden;
+    }
 
-/* Anytime the body has the loading class, our
+    /* Anytime the body has the loading class, our
    modal element will be visible */
-body.loading .modal {
-    display: block;
-}
+    body.loading .modal {
+      display: block;
+    }
 
-body {
-   color: #444;
-   background: #e2ff00;
-   /* fallback for old browsers */
-   background: -webkit-linear-gradient(to left, #000800, #e2ff00);
-   /* Chrome 10-25, Safari 5.1-6 */
-   background: linear-gradient(to left, #000800, #e2ff00);
-   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   font-family: 'Dosis', sans-serif;
-   background-repeat: no-repeat;
-   background-size: cover;
-   min-height: 100vh;
-   font-size: 16px;
- }
+    body {
+      color: #444;
+      background: #e2ff00;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #000800, #e2ff00);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #000800, #e2ff00);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      font-family: 'Dosis', sans-serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      font-size: 16px;
+    }
 
- a {
-   color: #444;
-   cursor: pointer;
- }
+    a {
+      color: #444;
+      cursor: pointer;
+    }
 
- a:hover {
-   color: #555;
-   text-decoration: none;
- }
-#URL {
-   margin-top: 20px;
-   padding: 0 5%;
-   color: darkblue;
-}
+    a:hover {
+      color: #555;
+      text-decoration: none;
+    }
 
-#wikiPage {
-   margin-top: 20px;
-   padding: 2% 6%;
-   color: darkblue;
-}
+    #URL {
+      margin-top: 20px;
+      padding: 0 5%;
+      color: darkblue;
+    }
 
-#Hits {
-   margin-top: 20px;
-   padding: 0 5%;
-   color: #437746;
-   font-size: 30px;
-}
+    #wikiPage {
+      margin-top: 20px;
+      padding: 2% 6%;
+      color: darkblue;
+    }
 
-.more {
-   color: darkgreen;
-}
-#output {
-   margin-top: 40px;
-   padding: 0 5%;
-}
+    #Hits {
+      margin-top: 20px;
+      padding: 0 5%;
+      color: #437746;
+      font-size: 30px;
+    }
 
+    .more {
+      color: darkgreen;
+    }
 
-#TimeAPI {
-   padding: 0 7%;
-   display:inline;
-   color:red;
-   }
-#Time {
-   padding: 0 10%;
-   display:inline;
-   color:red;
-   }
-
-.list a {
-  text-decoration: none;
-}
-.list a:hover {
-  text-decoration: none;
-  background: lightgreen;
-}
-li a:hover {
-  background: lightgreen;
-}
-
-h2 a:hover {
-  background: lightgreen;
-}
+    #output {
+      margin-top: 40px;
+      padding: 0 5%;
+    }
 
 
- #text {
-   padding: 10px 20px;
-   border-top-left-radius: 30px;
-   border-bottom-left-radius: 30px;
-   border: 0px solid;
-   width: 50%;
- }
+    #TimeAPI {
+      padding: 0 7%;
+      display: inline;
+      color: red;
+    }
 
- #text:focus {
-   box-shadow: 1px 3px 40px 5px #536970;
-   outline: none;
- }
- #not-found p {
-   font-size: 20px;
-  }
+    #Time {
+      padding: 0 10%;
+      display: inline;
+      color: red;
+    }
 
-.result {
-  padding: 0.5% 2%;
-  background: #fff;
-  margin: 1.5%;
-  border-left: 7px solid #536976;
-}
+    .list a {
+      text-decoration: none;
+    }
 
-.result h2 {
-  color: #536976;
-}
+    .list a:hover {
+      text-decoration: none;
+      background: lightgreen;
+    }
 
+    li a:hover {
+      background: lightgreen;
+    }
 
- button {
-   background: #536976;
-   color: #fff;
-   padding: 10px 20px;
-   border: 1px solid #536976;
-   border-radius: 30px;
-   margin-left: -55px;
- }
+    h2 a:hover {
+      background: lightgreen;
+    }
 
 
- .currDay {
-    background-color: aliceblue;
-    margin: 8px;
-    size: 12px;
-    border-radius: 25px;
-    border: 2px solid darkBlue;
-    padding: 20px;
-    width: 500px;
-    height:150px;
- }
+    #text {
+      padding: 10px 20px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      border: 0px solid;
+      width: 50%;
+    }
 
-.searchmatch{
+    #text:focus {
+      box-shadow: 1px 3px 40px 5px #536970;
+      outline: none;
+    }
+
+    #not-found p {
+      font-size: 20px;
+    }
+
+    .result {
+      padding: 0.5% 2%;
+      background: #fff;
+      margin: 1.5%;
+      border-left: 7px solid #536976;
+    }
+
+    .result h2 {
+      color: #536976;
+    }
+
+
+    button {
+      background: #536976;
+      color: #fff;
+      padding: 10px 20px;
+      border: 1px solid #536976;
+      border-radius: 30px;
+      margin-left: -55px;
+    }
+
+
+    .currDay {
+      background-color: aliceblue;
+      margin: 8px;
+      size: 12px;
+      border-radius: 25px;
+      border: 2px solid darkBlue;
+      padding: 20px;
+      width: 500px;
+      height: 150px;
+    }
+
+    .searchmatch {
       color: #a0ccd2;
-}
-#explain
-{
-     color: darkgreen;
-     font-family: "Times New Roman", Times, serif;
-}
+    }
 
-
+    #explain {
+      color: darkgreen;
+      font-family: "Times New Roman", Times, serif;
+    }
   </style>
   <!-- TODO: Missing CoffeeScript 2 -->
 
   <script type="text/javascript">
 
 
-$body = $("body");
+    $(function() {
+      $( document ).ajaxStart(function() {
+        $body.addClass("loading");
+        console.log("ajaxStart");
+      });
 
-$(document).on({
-    ajaxStart: function() { $body.addClass("loading");    },
-    ajaxStop: function() { $body.removeClass("loading"); }
-});
+      $( document ).ajaxStop(function() {
+        $body.removeClass("loading");
+        console.log("ajaxStop");
+      });
+      $body = $("body");
+      new WOW().init();
 
-$(function() {
-	new WOW().init();
+      var d = new Date();
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
 
-  var d = new Date();
-	var month = d.getMonth()+1;
-	var day = d.getDate();
+      var urlAbbe = "https://byabbe.se/on-this-day";
+      //  var url = "https://byabbe.se/on-this-day/9/27/events.json";
+      var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json';
 
-  var urlAbbe = "https://byabbe.se/on-this-day";
-//  var url = "https://byabbe.se/on-this-day/9/27/events.json";
-	var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
+      retrieve(url);
 
-  retrieve(url);
-
-	$( '.onThisDayList' ).change(function() {
-		var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json' ;
-		retrieve(url);
-	});
-
-});
+      $('.onThisDayList').change(function() {
+        var url = urlAbbe + '/' + month + '/' + day + '/' + $('.onThisDayList').val() + '.json';
+        retrieve(url);
+      });
 
 
-function retrieve(url){
-  start = new Date().getTime();
-//console.log(start);
-  $("#URL").html("<a href='" + url + "' target=_blank>" + url +"</a>");
-  let output = "";
 
-  $.event.trigger("ajaxStart");
+        function retrieve(url) {
+          start = new Date().getTime();
+          //console.log(start);
+          $("#URL").html("<a href='" + url + "' target=_blank>" + url + "</a>");
+          let output = "";
 
-  $.ajax({
-   type: "GET",
-   url: url,
-   complete: function(data) {
-   time = new Date().getTime() - start; // millisec
-	 console.log(time)
-	$("#TimeAPI").html(time + " msec");
+          $.event.trigger("ajaxStart");
 
-    wikipage = data.responseJSON.wikipedia;
-    $("#wikiPage").html("<a href='"+ wikipage +"' target=_blank>" + wikipage + "</a>");
-		switch( $('.onThisDayList').val()) {
-    	case "births":
-        	info = data.responseJSON.births;
-        	break;
-    	case "deaths":
-        	info = data.responseJSON.deaths;
-        	break;
-    	default:
-        	info = data.responseJSON.events;
-		}
-      let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
-          $("#Hits").html(numberofHits);
+          $.ajax({
+            type: "GET",
+            url: url,
+            complete: function(data) {
+              time = new Date().getTime() - start; // millisec
+              console.log(time)
+              $("#TimeAPI").html(time + " msec");
 
-          $.each(info, (i, val) => {
-            output += `
+              wikipage = data.responseJSON.wikipedia;
+              $("#wikiPage").html("<a href='" + wikipage + "' target=_blank>" + wikipage + "</a>");
+              switch ($('.onThisDayList').val()) {
+                case "births":
+                  info = data.responseJSON.births;
+                  break;
+                case "deaths":
+                  info = data.responseJSON.deaths;
+                  break;
+                default:
+                  info = data.responseJSON.events;
+              }
+              let numberofHits = "Number of hits on this day " + info.length + " <div data-wow-duration='6s' data-wow-offset='10' class='wow bounceInUp more'>scroll down to learn more </div>";
+              $("#Hits").html(numberofHits);
+
+              $.each(info, (i, val) => {
+                output += `
               <div class="text-left" id="results">
                   <div class="wow slideInLeft result" data-wow-offset="100" data-wow-duration="1s">${val.year} - ${val.description}
                   </div>
               </div>`
-              let wiki = val.wikipedia;
-							$.each(wiki, (j, w) => {
-            		output += `<div class="list">* Wikipedia <a href="${w.wikipedia}">${w.title}</a></div>`;
+                let wiki = val.wikipedia;
+                $.each(wiki, (j, w) => {
+                  output += `<div class="list">* Wikipedia <a href="${w.wikipedia}">${w.title}</a></div>`;
                 });
-          $("#output").html(output);
-//  				$.event.trigger("ajaxStop");
-          });
-					time = new Date().getTime() - start; // millisec
-					console.log(time)
-					$("#Time").html(time + " msec");
+                $("#output").html(output);
+                //  				$.event.trigger("ajaxStop");
+              });
 
-  	}})
-  }
+              time = new Date().getTime() - start; // millisec
+              console.log(time)
+              $("#Time").html(time + " msec");
 
-</script>
+            }
+          })
+        }
+      });
+  </script>
 
 </head>
+
 <body>
-<a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+  <a href="https://github.com/salgo60/WikiOnThisDay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
-<h2>On this day test</h2>
-<div id="explain">
-Gets data from  <a href="https://byabbe.se/on-this-day/">byabbe.se/on-this-day/</a> <br /><br /> <br />
-<b>Select:</b> <select class="onThisDayList">
-  <option value="events">Events</option>
-  <option value="births">Births</option>
-  <option value="deaths">Deaths</option>
-</select><br /><br />API call: <span id="URL"></span><br />Wikipage: <span id="wikiPage"></span>
-<br />
-Tid API: <div id="TimeAPI"></div><br />
-Tid: <div id="Time"></div>
-<div id="Hits"></div> <div id="Time"></div>
-<div id="Render"></div>
+  <h2>On this day test</h2>
+  <div id="explain">
+    Gets data from <a href="https://byabbe.se/on-this-day/">byabbe.se/on-this-day/</a> <br /><br /> <br />
+    <b>Select:</b> <select class="onThisDayList">
+      <option value="events">Events</option>
+      <option value="births">Births</option>
+      <option value="deaths">Deaths</option>
+    </select><br /><br />API call: <span id="URL"></span><br />Wikipage: <span id="wikiPage"></span>
+    <br />
+    Tid API: <div id="TimeAPI"></div><br />
+    Tid: <div id="Time"></div>
+    <div id="Hits"></div>
+    <div id="Time"></div>
+    <div id="Render"></div>
 
-<div id="output"></div>
-<div class="modal"></div>
-  <script>
-    // tell the embed parent frame the height of the content
-    if (window.parent && window.parent.parent){
-      window.parent.parent.postMessage(["resultsFrame", {
-        height: document.body.getBoundingClientRect().height,
-        slug: "wkdcz4h2"
-      }], "*")
-    }
-  </script>
+    <div id="output"></div>
+    <div class="modal"></div>
+    <script>
+      // tell the embed parent frame the height of the content
+      if (window.parent && window.parent.parent) {
+        window.parent.parent.postMessage(["resultsFrame", {
+          height: document.body.getBoundingClientRect().height,
+          slug: "wkdcz4h2"
+        }], "*")
+      }
+    </script>
 </body>
+
 </html>
